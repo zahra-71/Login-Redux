@@ -13,7 +13,7 @@ export default makeStyles(theme => ({
         left: 0,
     },
     logotypeContainer: {
-        backgroundColor: theme.palette.primary.main,
+        backgroundColor:theme.palette.text.primary,
         width: "60%",
         height: "100%",
         display: "flex",
@@ -71,13 +71,13 @@ export default makeStyles(theme => ({
     },
     textFieldUnderline: {
       "&:before": {
-        borderBottomColor: theme.palette.primary.light,
+        borderBottomColor: theme.palette.text.primary,
       },
       "&:after": {
-        borderBottomColor: theme.palette.primary.main,
+        borderBottomColor: theme.palette.secondary.main,
       },
       "&:hover:before": {
-        borderBottomColor: `${theme.palette.primary.light} !important`,
+        borderBottomColor: `${theme.palette.secondary.light} !important`,
       },
     },
     textField: {
@@ -90,7 +90,12 @@ export default makeStyles(theme => ({
       justifyContent: "space-between",
       alignItems: "center",
     },
-
+    // buttonRoot: {
+    //   "&:active , &:focus":{
+    //     backgroundColor: theme.palette.secondary.main
+    //   }
+     
+    // }
 
 
 }))

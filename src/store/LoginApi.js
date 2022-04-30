@@ -7,7 +7,7 @@ import { loginFailer, loginRequest, loginSuccess, logOut } from "./reducers/Logi
 
 export const LoginApi = async(dispatch, inputs, navigate) => {
    
-    const apiUrl = "localhost/api/v1/manage/login";
+    const apiUrl = "localhost:3001/api/v1/manage/login";
 
         dispatch(loginRequest(inputs))
             // console.log(inputs)

@@ -1,19 +1,31 @@
-import { Component } from 'react';
-import {Routes, Route, Navigate} from 'react-router-dom';
+import classnames from 'classnames';
 
 // Component
-import  Dashboard  from '../../pages/dashboard/Dashboard';
+import Sidebar from '../Sidebar/Sidebar';
 import Header from '../Header/Header';
 
-function Layout() {
+import useStyles from './styles'
+import {useLayoutState} from '../../context/LayoutContext';
+import {Outlet} from 'react-router-dom';
+
+function Layout({children}) {
+
+    var classes = useStyles();
+    var layoutState = useLayoutState();
+    // console.log("layout")
+
     return(
-        <div>
+        <div className={classes.root}>
             <Header />
-            <Dashboard />
-            <Routes>
-                <Route exact path="/app/dashboard" element={<Dashboard />} />
-            </Routes>
+            <Sidebar />
+            
+            <div className={classnames(classes.content,{
+                [classes.contentShift]: layoutState.isSidebarOpened,
+            })}>
+                <Outlet />
+            </div>
         </div>
     )
 }
+
 export default Layout;

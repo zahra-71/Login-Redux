@@ -5,14 +5,13 @@ import logo from "./logo.svg";
 
 // styles
 import useStyles from "./styles";
-import { LoginApi } from "../../store/LoginApi";
-import { useNavigate,useLocation } from "react-router-dom";
-import { getToken } from "../../storage/Storage";
-import { selectIsloading, selectError, selectAthunticated } from "../../store/reducers/LoginReducer";
+import {LoginApi} from "../../store/LoginApi";
+import {useNavigate} from "react-router-dom";
+import {selectIsloading, selectError} from "../../store/reducers/LoginReducer";
+import classNames from "classnames";
 
 function LoginPage () {
 
-    const token = getToken();
     const classes = useStyles();
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -42,7 +41,7 @@ function LoginPage () {
         <Grid container className={classes.container}>
             {/* logo of login */}
             <div className={classes.logotypeContainer}>
-                <img src={logo} className={classes.logotypeImage}/>
+                <img src={logo} className={classes.logotypeImage} alt=""/>
                 <Typography className={classes.logotypeText}>پنل کاربری</Typography>
             </div>
             {/* end logo of login */}
@@ -64,9 +63,9 @@ function LoginPage () {
                         name="username"
                         placeholder="نام کاربری"
                         type="email"
-                        inputProps={{
+                        InputProps={{
                             classes:{
-                                underline: classes.TextFieldUnderline,
+                                underline: classes.textFieldUnderline,
                                 input: classes.textFeild
                             }
                         }}
@@ -79,9 +78,9 @@ function LoginPage () {
                         name="password"
                         placeholder=" رمز عبور"
                         onChange={handleChange}
-                        inputProps={{
+                        InputProps={{
                             classes:{
-                                underline: classes.TextFieldUnderline,
+                                underline: classes.textFieldUnderline,
                                 input: classes.textFeild
                             }
                         }}
@@ -99,7 +98,8 @@ function LoginPage () {
                                 }
                                 onClick={handleSubmit}
                                 variant="contained"
-                                color="primary"
+                                color="secondary"
+                                // className={classes.buttonRoot}
                                 size="large"
                             >
                                 ورود

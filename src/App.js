@@ -11,6 +11,7 @@ import { selectAthunticated } from './store/reducers/LoginReducer';
 import Layout from './components/Layout/Layout';
 import Error from './pages/error/Error';
 import { loadState } from './storage/ReduxStorage';
+import AddImages from './pages/addImages/AddImages';
 
 function App() {
 
@@ -23,7 +24,6 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route
-            exact
             path="/app"
             element={<Navigate replace to="/app/dashboard" />}
           />
@@ -35,15 +35,89 @@ function App() {
           )}
           {isAthunticated && (
             <Route 
-              path="/app/*"
+              path="/app"
               element={<Layout />}
-            />
+            >
+              <Route path="/app/dashboard" element={<Dashboard />}/>
+              <Route path="/app/addImages" element={<AddImages />}/>
+
+            </Route>
           )}
           <Route path="*" element={<Navigate to={isAthunticated ? "/app/dashboard": "/login"}/>} />
+        
+          {/* <Route path="*" element={<Navigate to={isAthunticated ? "/app/dashboard": "/login"}/>} />
+          <Route
+            path="/app"
+            element={<PrivateRoute element={<Layout />} />}
+          >
+            <Route path="/app/dashboard" element={<Dashboard />}/>
+            <Route path="/app/addImages" element={<AddImages />}/>
+          </Route>
+          <Route
+            path="/login"
+            element={<PublicRoute element={<LoginPage />} />}
+          /> */}
+          {/* <Route path="*" element={<Error />} /> */}
+        
+        
         </Routes>
       </BrowserRouter>
     </div>
   );
+
+  // function PrivateRoute({component, ...rest }) {
+  //   console.log(isAthunticated)
+  //   return (
+    
+  //     // <Route
+  //     //   {...rest}
+  //     //   render={props =>
+  //     isAthunticated ? (
+  //           <Layout /> 
+  //           //  React.createElement(component, props)
+            
+
+  //         ) : (
+  //           <Navigate
+  //           to={{
+  //             pathname: "/login",
+  //             // state: {
+  //             //   from: props.location,
+  //             // },
+  //           }}
+  //         />
+  //         )
+  //     //   }
+  //     // />
+  //   );
+  // }
+
+
+  //   function PublicRoute({component, ...rest }) {
+  //     console.log({isAthunticated})
+  //     return (
+  //       // <Route
+  //       //   {...rest}
+  //       //   render={props =>
+  //       isAthunticated ? (
+  //             <Navigate
+  //               to={{
+  //                 pathname: "/",
+  //               }}
+  //             />
+  //           ) : (
+  //             // React.createElement(component, props)
+  //             <LoginPage />
+            
+  //           )
+  //       //   }
+  //       // />
+  //     );
+  //   }
+  //   console.timeEnd("benchmark 2")
+
+
+
 }
 
 export default App;
