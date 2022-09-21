@@ -1,5 +1,6 @@
 import React from "react";
 
+// in index for add final value
 var LayoutStateContext = React.createContext();
 var LayoutDispatchContext = React.createContext();
 
@@ -26,6 +27,7 @@ function LayoutProvider({ children }) {
     );
   }
 
+  // change value in any file
   function useLayoutState() {
     var context = React.useContext(LayoutStateContext);
     if (context === undefined) {

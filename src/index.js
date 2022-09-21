@@ -10,6 +10,7 @@ import * as serviceWorker from './serviceWorker';
 import { loadState, saveState } from './storage/ReduxStorage';
 import { ThemeProvider } from '@material-ui/styles';
 import { LayoutProvider } from './context/LayoutContext';
+import { UserProvider } from './context/UserContext';
 
 const persistedState = loadState();
 
@@ -27,12 +28,14 @@ const loadingStyle = {
 ReactDOM.render(
   <ThemeProvider theme={Themes.default}>
     <LayoutProvider>
-      <Provider store={store}>
-      <Suspense  fallback={<div style={loadingStyle}>Loading... </div>}>
-            <CssBaseline />
-            <App />
-          </Suspense>
-      </Provider>
+      <UserProvider>
+        <Provider store={store}>
+        <Suspense  fallback={<div style={loadingStyle}>Loading... </div>}>
+              <CssBaseline />
+              <App />
+            </Suspense>
+        </Provider>
+      </UserProvider>
     </LayoutProvider>
 
   </ThemeProvider>,

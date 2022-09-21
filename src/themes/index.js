@@ -8,7 +8,7 @@ const fonts = {
   overrides: {
     MuiCssBaseline: {
       '@global': {
-          // '@font-face': [iRANSansWeb],
+          '@font-face': ["IRANSans"],
       },
     }
   }

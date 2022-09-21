@@ -3,14 +3,14 @@ import { Outlet } from '@mui/icons-material';
 
 function AddImages () {
 
-    var classes = useStyles();
-    console.log("addImages")
+  var classes = useStyles();
+  // console.log("addImages")
     
-    return(
-        <div className={classes.container}>
-            add image
-            <Outlet />
-        </div>
+  return(
+    <div className={classes.container}>
+      add image
+      <Outlet />
+    </div>
     )
 }
 export default AddImages;
